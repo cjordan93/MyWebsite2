@@ -1,0 +1,554 @@
+/*  Primary style
+******************************/
+
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 300;
+  margin: 0;
+}
+
+body, html {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+p {
+  line-height: 1.5;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+h1, h2, h3 {
+  color: #fff;
+}
+
+/*  Navigation
+******************************/
+
+/* No Touch devices */
+.nav-trigger {
+  display: none;
+}
+
+.no-touch #vertical-nav  {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.no-touch #vertical-nav li {
+  text-align: right;
+}
+
+.no-touch #vertical-nav a {
+  display: inline-block;
+}
+
+.no-touch #vertical-nav a span {
+  float: right;
+  display: inline-block;
+  -webkit-transform: scale(0.6);
+  -moz-transform: scale(0.6);
+  -ms-transform: scale(0.6);
+  -o-transform: scale(0.6);
+  transform: scale(0.6);
+}
+
+.no-touch #vertical-nav a:hover span {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+.no-touch #vertical-nav a.is-selected .dot {
+  background-color: white;
+}
+
+.no-touch #vertical-nav .dot {
+  position: relative;
+  /* we set a top value in order to align the dot with the label. If you change label's font, you may need to change this top value*/
+  top: 8px;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #3B4B5B;
+  -webkit-transition: -webkit-transform 0.2s, background-color 0.5s;
+  -moz-transition: -moz-transform 0.2s, background-color 0.5s;
+  transition: transform 0.2s, background-color 0.5s;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+.no-touch #vertical-nav .dot-label {
+  position: relative;
+  margin-right: 10px;
+  padding: .4em .5em;
+  color: white;
+  font-size: 14px;
+  font-size: 0.875rem;
+  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.2s, opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 0;
+  -webkit-transform-origin: 100% 50%;
+  -moz-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  -o-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+
+.no-touch #vertical-nav a:hover .dot-label {
+  opacity: 1;
+}
+
+/* Touch devices */
+.touch .nav-trigger {
+  display: block;
+  z-index: 2;
+  position: fixed;
+  bottom: 30px;
+  right: 5%;
+  height: 44px;
+  width: 44px;
+  border-radius: 0.25em;
+  background: rgba(255, 255, 255, 0.9);
+}
+.touch .nav-trigger span {
+  position: absolute;
+  height: 4px;
+  width: 4px;
+  background-color: #3e3947;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.touch .nav-trigger span::before, .touch .nav-trigger span::after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background-color: inherit;
+  border-radius: inherit;
+}
+.touch .nav-trigger span::before {
+  top: -9px;
+}
+.touch .nav-trigger span::after {
+  bottom: -9px;
+}
+
+.touch #vertical-nav {
+  position: fixed;
+  z-index: 1;
+  right: 5%;
+  bottom: 30px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 90%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  -webkit-transform-origin: right bottom;
+  -moz-transform-origin: right bottom;
+  -ms-transform-origin: right bottom;
+  -o-transform-origin: right bottom;
+  transform-origin: right bottom;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  border-radius: 0.25em;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.touch #vertical-nav a {
+  display: block;
+  padding: 1em;
+  border-bottom: 1px solid rgba(62, 57, 71, 0.1);
+  color: black;
+}
+
+.touch #vertical-nav a span:first-child {
+  display: none;
+}
+.touch #vertical-nav a.is-selected span:last-child {
+  color: #A14A00;
+}
+
+.touch #vertical-nav.open {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+.touch #vertical-nav.open + .nav-trigger {
+  background-color: transparent;
+}
+.touch #vertical-nav.open + .nav-trigger span {
+  background-color: rgba(62, 57, 71, 0);
+}
+.touch #vertical-nav.open + .nav-trigger span::before, .touch #vertical-nav.open + .nav-trigger span::after {
+  height: 3px;
+  width: 20px;
+  border-radius: 0;
+  left: -8px;
+}
+.touch #vertical-nav.open + .nav-trigger span::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 1px;
+}
+.touch #vertical-nav.open + .nav-trigger span::after {
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+  bottom: 0;
+}
+.touch #vertical-nav li:last-child a {
+  border-bottom: none;
+}
+
+/*  Section style
+******************************/
+
+.section-content {
+  min-height: 100%;
+  padding: 1px 25% 1px 10%;
+  text-align: center;
+  width: 100%;
+  overflow: auto;
+}
+
+#section-1 {
+  background-color: #222F3D;
+}
+
+#section-2 {
+  background-color: #0A1723;
+}
+
+#section-3 {
+  background-color: #222F3D;
+}
+
+#section-4 {
+  background-color: #0A1723;
+  border-top: 1px solid #030B15;
+}
+
+.section-content p {
+  color: #fff;
+}
+
+/*  Home Page
+******************************/
+
+.home-container {
+  margin-top: 15%;
+}
+
+.name {
+  text-transform: uppercase;
+  text-shadow: 5px 3px 5px #000;
+  color: #fff;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+.about {
+  margin-top: 5%;
+  text-align: left;
+}
+
+.about:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/*  Resume Page
+******************************/
+
+.resume-container {
+  text-align: left;
+}
+
+.profile {
+  margin-bottom: 0;
+}
+
+.profile-content {
+  margin-bottom: 3%;
+  font-size: 19px;
+  margin-top: 1%;
+}
+
+#resume-navigation {
+  text-align: center; 
+}
+
+#resume-navigation li {
+  display: inline-block;
+  padding: 0 3%;
+  opacity: .5;
+  transition: opacity .3s;
+}
+
+#resume-navigation li:hover {
+  opacity: 1;
+}
+
+#resume-navigation a {
+  color: #fff;
+}
+
+.resume-content {
+  position: relative;
+}
+
+.resume-content div {
+  color: #fff;
+  width: 100%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  position: absolute;
+  padding: 0 2%;
+}
+
+.resume-content i {
+  display: block;
+  text-align: center;
+  margin: 2% 0;
+}
+
+.resume-content ul {
+  list-style-type: circle;
+  margin-left: 3%;
+  margin-bottom: 2%;
+}
+
+/* Touch devices */
+
+.touch .profile {
+  font-size: 22px;
+}
+
+.touch .profile-content {
+  font-size: 16px;
+}
+
+
+/*  Contact Page
+******************************/
+
+.contact-container {
+  margin-top: 15%;
+}
+
+.contact-container img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  color: white;
+}
+
+.contact-container p {
+  font-size: 19px;
+  margin-bottom: 5%;
+  color: #fff;
+}
+
+.contact-info {
+  margin: 0 auto;
+  width: 300px;
+  padding-left: 30px;
+  font-size: 19px;
+}
+
+.contact-info li.tel {
+  width: 145px;
+}
+
+.contact-info li.email {
+  width: 231px;
+}
+
+.contact-info li {
+  text-align: left;
+  margin-bottom: 5%;
+}
+
+.contact-info a {
+  color: #fff;
+}
+
+.contact-info a:after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 0;
+  background: transparent;
+  transition: width .5s ease, background-color .5s ease;
+  -webkit-transition: width .5s ease, background-color .5s ease;
+  -ms-transition: width .5s ease, background-color .5s ease;
+  -moz-transition: width .5s ease, background-color .5s ease;
+  -o-transition: width .5s ease, background-color .5s ease;
+}
+
+.contact-info a:hover:after {
+  width: 100%;
+  background-color: #fff;
+}
+
+.contact-info a:visited {
+  color: #fff;
+}
+
+.contact-info li i {
+  width: 30px;
+}
+
+.social-media {
+  margin-top: 10%;
+}
+
+.social-media li {
+  display: inline-block;
+  padding: 0 8%;
+}
+
+.social-media li a {
+  color: white;
+  opacity: .5;
+  transition: opacity .5s;
+}
+
+.social-media li a:hover {
+  opacity: 1;
+}
+
+.social-media li a:visited {
+  color: white;
+}
+
+/* Touch devices */
+
+.touch .contact-container {
+  margin-top: 10%;
+}
+
+.touch .contact-container p, .touch .contact-info {
+  font-size: 16px;
+}
+
+.touch .contact-info a:after {
+  display: none;
+}
+
+.touch .contact-info a:hover:after {
+  display: none;
+}
+
+.touch .social-media li {
+  padding: 2% 8%;
+}
+
+/*  Media Queries
+******************************/
+
+/* About Page */
+@media screen and (min-width: 768px) {
+  .about .left {
+    width: 45%;
+    float: left;
+  }
+
+  .about .right {
+    width: 45%;
+    float: right;
+  }
+}
+
+/* Contact Page */
+
+@media screen and (min-width: 1200px) {
+  
+  .contact-container p {
+    margin-bottom: 3%;
+  }
+  
+  .contact-container img {
+    float: left;
+    margin-bottom: 5%;
+  }
+  
+  .contact-description {
+    width: 75%;
+    float: right;
+  }
+  
+  .contact:before {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+}
+
+@media screen and (orientation: landscape) {
+  
+  .touch .social-media li {
+    padding: 0 6%;
+    margin-bottom: 5%;
+  }
+}
